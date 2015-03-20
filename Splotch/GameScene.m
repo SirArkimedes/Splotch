@@ -43,12 +43,14 @@
     spriteWallLeft.position = CGPointMake(0, self.size.height/4);
     spriteWallLeft.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:spriteWallLeft.size];
     spriteWallLeft.physicsBody.affectedByGravity = FALSE;
+    spriteWallLeft.physicsBody.dynamic = NO;
     [self addChild:spriteWallLeft];
     
     SKSpriteNode *spriteWallRight = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 100)];
     spriteWallRight.position = CGPointMake(self.frame.size.width, self.size.height/4);
     spriteWallRight.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:spriteWallRight.size];
     spriteWallRight.physicsBody.affectedByGravity = FALSE;
+    spriteWallRight.physicsBody.dynamic = NO;
     [self addChild:spriteWallRight];
     
 //    self.physicsBody = [SKPhysicsBody ]
