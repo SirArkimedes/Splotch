@@ -8,6 +8,12 @@
 
 #import "GameScene.h"
 
+@interface GameScene ()
+
+@property (strong, nonatomic) SKSpriteNode *hero;
+
+@end
+
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view {
@@ -29,6 +35,7 @@
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
     hero.physicsBody.affectedByGravity = FALSE;
     
+    self.hero = hero;
     [self addChild:hero];
     
     // Spawn walls
@@ -49,10 +56,12 @@
 
 - (void)swipeLeft {
     NSLog(@"Did Swipe Left");
+    [self.hero.physicsBody applyImpulse:CGVectorMake(10, 0)];
 }
 
 - (void)swipeRight {
     NSLog(@"Did Swipe Right");
+    [self.hero.physicsBody applyImpulse:CGVectorMake(-10, 0)];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
