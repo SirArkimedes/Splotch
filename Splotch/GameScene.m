@@ -19,6 +19,15 @@
     
     [self addChild:sprite];
     
+    // Spawn walls
+    SKSpriteNode *spriteWall = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 100)];
+    spriteWall.position = CGPointMake(0, self.size.height/4);
+    [self addChild:spriteWall];
+    
+    SKSpriteNode *spriteWall2 = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 100)];
+    spriteWall2.position = CGPointMake(self.frame.size.width, self.size.height/4);
+    [self addChild:spriteWall2];
+    
 //    self.physicsBody = [SKPhysicsBody ]
 }
 
@@ -28,7 +37,7 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(40, 40)];
+        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:CGSizeMake(40, 40)];
         
 //        sprite.xScale = 0.5;
 //        sprite.yScale = 0.5;
