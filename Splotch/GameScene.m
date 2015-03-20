@@ -56,12 +56,12 @@
 
 - (void)swipeLeft {
     NSLog(@"Did Swipe Left");
-    [self.hero.physicsBody applyImpulse:CGVectorMake(10, 0)];
+    [self.hero.physicsBody applyImpulse:CGVectorMake(-10, 0)];
 }
 
 - (void)swipeRight {
     NSLog(@"Did Swipe Right");
-    [self.hero.physicsBody applyImpulse:CGVectorMake(-10, 0)];
+    [self.hero.physicsBody applyImpulse:CGVectorMake(10, 0)];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
