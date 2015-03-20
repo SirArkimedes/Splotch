@@ -13,20 +13,26 @@
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     
-    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(40, 40)];
+    SKSpriteNode *hero = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(40, 40)];
     
-    sprite.position = CGPointMake(self.size.width/2, self.size.height/4);
+    hero.position = CGPointMake(self.size.width/2, self.size.height/4);
+    hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
+    hero.physicsBody.affectedByGravity = FALSE;
     
-    [self addChild:sprite];
+    [self addChild:hero];
     
     // Spawn walls
-    SKSpriteNode *spriteWall = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 100)];
-    spriteWall.position = CGPointMake(0, self.size.height/4);
-    [self addChild:spriteWall];
+    SKSpriteNode *spriteWallLeft = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 100)];
+    spriteWallLeft.position = CGPointMake(0, self.size.height/4);
+    spriteWallLeft.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:spriteWallLeft.size];
+    spriteWallLeft.physicsBody.affectedByGravity = FALSE;
+    [self addChild:spriteWallLeft];
     
-    SKSpriteNode *spriteWall2 = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 100)];
-    spriteWall2.position = CGPointMake(self.frame.size.width, self.size.height/4);
-    [self addChild:spriteWall2];
+    SKSpriteNode *spriteWallRight = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 100)];
+    spriteWallRight.position = CGPointMake(self.frame.size.width, self.size.height/4);
+    spriteWallRight.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:spriteWallRight.size];
+    spriteWallRight.physicsBody.affectedByGravity = FALSE;
+    [self addChild:spriteWallRight];
     
 //    self.physicsBody = [SKPhysicsBody ]
 }
