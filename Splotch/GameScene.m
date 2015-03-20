@@ -13,6 +13,16 @@
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     
+    // Setup touches
+    UISwipeGestureRecognizer * swipeLeft= [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeLeft)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [view addGestureRecognizer:swipeLeft];
+    // listen for swipes to the right
+    UISwipeGestureRecognizer * swipeRight= [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeRight)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [view addGestureRecognizer:swipeRight];
+    
+    // Hero
     SKSpriteNode *hero = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(40, 40)];
     
     hero.position = CGPointMake(self.size.width/2, self.size.height/4);
@@ -37,24 +47,12 @@
 //    self.physicsBody = [SKPhysicsBody ]
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor blueColor] size:CGSizeMake(40, 40)];
-        
-//        sprite.xScale = 0.5;
-//        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-//        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-//        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
+- (void)swipeLeft {
+    NSLog(@"Did Swipe Left");
+}
+
+- (void)swipeRight {
+    NSLog(@"Did Swipe Right");
 }
 
 -(void)update:(CFTimeInterval)currentTime {
