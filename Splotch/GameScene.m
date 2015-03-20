@@ -13,7 +13,13 @@
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     
-//    self.physicsBody = [SKPhysicsBody bod]
+    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(40, 40)];
+    
+    sprite.position = CGPointMake(self.size.width/2, self.size.height/4);
+    
+    [self addChild:sprite];
+    
+//    self.physicsBody = [SKPhysicsBody ]
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -22,7 +28,7 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(5.f, 5.f)];
+        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(40, 40)];
         
 //        sprite.xScale = 0.5;
 //        sprite.yScale = 0.5;
