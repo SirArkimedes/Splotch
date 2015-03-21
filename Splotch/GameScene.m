@@ -76,14 +76,14 @@ typedef enum {
     
     // Create Vortexes outside of walls
     SKFieldNode *vortexLeft = [SKFieldNode springField];
-    vortexLeft.position = CGPointMake(-self.size.width+50, self.size.height/4);
+    vortexLeft.position = CGPointMake(-self.size.width+47, self.size.height/4);
     vortexLeft.enabled = YES;
     vortexLeft.strength = .3f;
     vortexLeft.region = [[SKRegion alloc] initWithSize:self.frame.size];
     [self addChild:vortexLeft];
     
     SKFieldNode *vortexRight = [SKFieldNode springField];
-    vortexRight.position = CGPointMake((self.size.width*2)-50, self.size.height/4);
+    vortexRight.position = CGPointMake((self.size.width*2)-47, self.size.height/4);
     vortexRight.enabled = YES;
     vortexRight.strength = .3f;
     vortexRight.region = [[SKRegion alloc] initWithSize:self.frame.size];
@@ -104,7 +104,7 @@ typedef enum {
 }
 
 - (void)swipeLeft {
-    NSLog(@"Did Swipe Left");
+//    NSLog(@"Did Swipe Left");
     [self.hero.physicsBody applyImpulse:CGVectorMake(-10, 0)];
     
     if (self.hero.physicsBody.dynamic == NO) {
@@ -114,7 +114,7 @@ typedef enum {
 }
 
 - (void)swipeRight {
-    NSLog(@"Did Swipe Right");
+//    NSLog(@"Did Swipe Right");
     [self.hero.physicsBody applyImpulse:CGVectorMake(10, 0)];
     
     if (self.hero.physicsBody.dynamic == NO) {
