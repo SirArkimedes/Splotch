@@ -74,6 +74,21 @@ typedef enum {
     spriteWallRight.physicsBody.contactTestBitMask = heroCollider;
     [self addChild:spriteWallRight];
     
+    // Create Vortexes outside of walls
+    SKFieldNode *vortexLeft = [SKFieldNode springField];
+    vortexLeft.position = CGPointMake(-self.size.width+50, self.size.height/4);
+    vortexLeft.enabled = YES;
+    vortexLeft.strength = .3f;
+    vortexLeft.region = [[SKRegion alloc] initWithSize:self.frame.size];
+    [self addChild:vortexLeft];
+    
+    SKFieldNode *vortexRight = [SKFieldNode springField];
+    vortexRight.position = CGPointMake((self.size.width*2)-50, self.size.height/4);
+    vortexRight.enabled = YES;
+    vortexRight.strength = .3f;
+    vortexRight.region = [[SKRegion alloc] initWithSize:self.frame.size];
+    [self addChild:vortexRight];
+    
 //    self.physicsBody = [SKPhysicsBody ]
 }
 
