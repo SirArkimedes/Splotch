@@ -20,6 +20,9 @@ typedef enum {
 
 @property (strong, nonatomic) SKSpriteNode *hero;
 
+@property BOOL canSwipeLeft;
+@property BOOL canSwipeRight;
+
 @end
 
 @implementation GameScene
@@ -93,6 +96,10 @@ typedef enum {
     vortexRight.region = [[SKRegion alloc] initWithSize:self.frame.size];
     [self addChild:vortexRight];
     
+    // Can swipe either way on start
+    self.canSwipeRight = YES;
+    self.canSwipeLeft = YES;
+    
 //    self.physicsBody = [SKPhysicsBody ]
 }
 
@@ -100,10 +107,14 @@ typedef enum {
     
     if (contact.bodyA.categoryBitMask == heroCollider && contact.bodyB.categoryBitMask == wallColliderLeft) {
         NSLog(@"Collide on Left");
+        self.canSwipeLeft = NO;
+        self.canSwipeRight = YES;
     }
     
     if (contact.bodyA.categoryBitMask == heroCollider && contact.bodyB.categoryBitMask == wallColliderRight) {
         NSLog(@"Collide on Right");
+        self.canSwipeRight = NO;
+        self.canSwipeLeft = YES;
     }
     
 }
@@ -111,14 +122,20 @@ typedef enum {
 - (void)swipeLeft {
 //    NSLog(@"Did Swipe Left");
     
-    [self.hero.physicsBody applyImpulse:CGVectorMake(-40, 0)];
+    if (self.canSwipeLeft) {
+        [self.hero.physicsBody applyImpulse:CGVectorMake(-40, 0)];
+        self.canSwipeLeft = NO;
+    }
     
 }
 
 - (void)swipeRight {
 //    NSLog(@"Did Swipe Right");
     
-    [self.hero.physicsBody applyImpulse:CGVectorMake(40, 0)];
+    if (self.canSwipeRight) {
+        [self.hero.physicsBody applyImpulse:CGVectorMake(40, 0)];
+        self.canSwipeRight = NO;
+    }
 
 }
 
