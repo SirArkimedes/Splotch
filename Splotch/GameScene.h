@@ -10,4 +10,12 @@
 
 @interface GameScene : SKScene <SKPhysicsContactDelegate>
 
+typedef enum {
+    
+    heroCollider,
+    wallColliderRight,
+    wallColliderLeft
+    
+} collsions;
+
 @end

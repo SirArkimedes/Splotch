@@ -16,6 +16,7 @@
 		4D4A70D51ABC957A00C7669F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A70D41ABC957A00C7669F /* Images.xcassets */; };
 		4D4A70D81ABC957A00C7669F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A70D61ABC957A00C7669F /* LaunchScreen.xib */; };
 		4D4A70E41ABC957A00C7669F /* SplotchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A70E31ABC957A00C7669F /* SplotchTests.m */; };
+		4DE941791ABE81490065EF78 /* HeroSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE941781ABE81490065EF78 /* HeroSprite.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		4D4A70DD1ABC957A00C7669F /* SplotchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplotchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4A70E21ABC957A00C7669F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D4A70E31ABC957A00C7669F /* SplotchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplotchTests.m; sourceTree = "<group>"; };
+		4DE941771ABE81490065EF78 /* HeroSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroSprite.h; sourceTree = "<group>"; };
+		4DE941781ABE81490065EF78 /* HeroSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroSprite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 			children = (
 				4D4A70C61ABC957A00C7669F /* AppDelegate.h */,
 				4D4A70C71ABC957A00C7669F /* AppDelegate.m */,
+				4DE941771ABE81490065EF78 /* HeroSprite.h */,
+				4DE941781ABE81490065EF78 /* HeroSprite.m */,
 				4D4A70C91ABC957A00C7669F /* GameScene.h */,
 				4D4A70CA1ABC957A00C7669F /* GameScene.m */,
 				4D4A70CC1ABC957A00C7669F /* GameScene.sks */,
@@ -233,6 +238,7 @@
 				4D4A70C81ABC957A00C7669F /* AppDelegate.m in Sources */,
 				4D4A70CB1ABC957A00C7669F /* GameScene.m in Sources */,
 				4D4A70C51ABC957A00C7669F /* main.m in Sources */,
+				4DE941791ABE81490065EF78 /* HeroSprite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +433,7 @@
 				4D4A70E91ABC957A00C7669F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D4A70EA1ABC957A00C7669F /* Build configuration list for PBXNativeTarget "SplotchTests" */ = {
 			isa = XCConfigurationList;
@@ -435,6 +442,7 @@
 				4D4A70EC1ABC957A00C7669F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,14 +7,7 @@
 //
 
 #import "GameScene.h"
-
-typedef enum {
-    
-    heroCollider,
-    wallColliderRight,
-    wallColliderLeft
-    
-} collsions;
+#import "HeroSprite.h"
 
 @interface GameScene ()
 
@@ -45,18 +38,9 @@ typedef enum {
     [view addGestureRecognizer:swipeRight];
     
     // Hero
-    SKSpriteNode *hero = [SKSpriteNode spriteNodeWithColor:[SKColor blackColor] size:CGSizeMake(40, 40)];
-    
-    hero.position = CGPointMake(self.size.width/2, self.size.height/4);
-    hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
-//    hero.physicsBody.affectedByGravity = FALSE;
-    hero.physicsBody.categoryBitMask = heroCollider;
-    hero.physicsBody.collisionBitMask = heroCollider | wallColliderRight | wallColliderLeft;
-    hero.physicsBody.contactTestBitMask = wallColliderRight | wallColliderLeft;
-    hero.physicsBody.restitution = 0;
-    
-    self.hero = hero;
-    [self addChild:hero];
+    self.hero = [HeroSprite heroSprite];
+    self.hero.position = CGPointMake(self.size.width/2, self.size.height/4);
+    [self addChild:self.hero];
     
     // Spawn walls
     SKSpriteNode *spriteWallLeft = [SKSpriteNode spriteNodeWithColor:[SKColor cyanColor] size:CGSizeMake(40, 100)];
