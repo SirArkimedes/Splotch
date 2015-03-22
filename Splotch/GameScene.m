@@ -11,7 +11,8 @@
 typedef enum {
     
     heroCollider,
-    wallCollider
+    wallColliderRight,
+    wallColliderLeft
     
 } collsions;
 
@@ -47,8 +48,8 @@ typedef enum {
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
 //    hero.physicsBody.affectedByGravity = FALSE;
     hero.physicsBody.categoryBitMask = heroCollider;
-    hero.physicsBody.collisionBitMask = heroCollider | wallCollider;
-    hero.physicsBody.contactTestBitMask = wallCollider | wallCollider;
+    hero.physicsBody.collisionBitMask = heroCollider | wallColliderRight | wallColliderLeft;
+    hero.physicsBody.contactTestBitMask = wallColliderRight | wallColliderLeft;
     hero.physicsBody.restitution = 0;
     
     self.hero = hero;
@@ -60,8 +61,8 @@ typedef enum {
     spriteWallLeft.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:spriteWallLeft.size];
 //    spriteWallLeft.physicsBody.affectedByGravity = FALSE;
     spriteWallLeft.physicsBody.dynamic = NO;
-    spriteWallLeft.physicsBody.categoryBitMask = wallCollider;
-    spriteWallLeft.physicsBody.collisionBitMask = wallCollider | heroCollider;
+    spriteWallLeft.physicsBody.categoryBitMask = wallColliderLeft;
+    spriteWallLeft.physicsBody.collisionBitMask = wallColliderRight | heroCollider;
     spriteWallLeft.physicsBody.contactTestBitMask = heroCollider;
     spriteWallLeft.physicsBody.restitution = 0;
     [self addChild:spriteWallLeft];
@@ -71,8 +72,8 @@ typedef enum {
     spriteWallRight.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:spriteWallRight.size];
 //    spriteWallRight.physicsBody.affectedByGravity = FALSE;
     spriteWallRight.physicsBody.dynamic = NO;
-    spriteWallRight.physicsBody.categoryBitMask = wallCollider;
-    spriteWallRight.physicsBody.collisionBitMask = wallCollider | heroCollider;
+    spriteWallRight.physicsBody.categoryBitMask = wallColliderRight;
+    spriteWallRight.physicsBody.collisionBitMask = wallColliderLeft | heroCollider;
     spriteWallRight.physicsBody.contactTestBitMask = heroCollider;
     spriteWallRight.physicsBody.restitution = 0;
     [self addChild:spriteWallRight];
@@ -97,9 +98,12 @@ typedef enum {
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
     
-    if (contact.bodyA.categoryBitMask == heroCollider || contact.bodyB.categoryBitMask == wallCollider) {
-        NSLog(@"Something collided");
-        
+    if (contact.bodyA.categoryBitMask == heroCollider && contact.bodyB.categoryBitMask == wallColliderLeft) {
+        NSLog(@"Collide on Left");
+    }
+    
+    if (contact.bodyA.categoryBitMask == heroCollider && contact.bodyB.categoryBitMask == wallColliderRight) {
+        NSLog(@"Collide on Right");
     }
     
 }
