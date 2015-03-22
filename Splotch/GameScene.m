@@ -19,6 +19,8 @@ typedef enum {
 
 @property (strong, nonatomic) SKSpriteNode *hero;
 
+@property BOOL canSwipe;
+
 @end
 
 @implementation GameScene
@@ -92,6 +94,9 @@ typedef enum {
     vortexRight.region = [[SKRegion alloc] initWithSize:self.frame.size];
     [self addChild:vortexRight];
     
+    // Can only swipe when on a wall
+    self.canSwipe = YES;
+    
 //    self.physicsBody = [SKPhysicsBody ]
 }
 
@@ -99,6 +104,8 @@ typedef enum {
     
     if (contact.bodyA.categoryBitMask == heroCollider || contact.bodyB.categoryBitMask == wallCollider) {
         NSLog(@"Something collided");
+        
+        self.canSwipe = YES;
         
 //        contact.bodyA.dynamic = NO;
 //        self.hero.position = CGPointMake(self.hero.position.x, self.hero.position.y);
@@ -108,22 +115,22 @@ typedef enum {
 
 - (void)swipeLeft {
 //    NSLog(@"Did Swipe Left");
-    [self.hero.physicsBody applyImpulse:CGVectorMake(-40, 0)];
     
-    if (self.hero.physicsBody.dynamic == NO) {
-        self.hero.physicsBody.dynamic = YES;
+    if (self.canSwipe == YES) {
+        [self.hero.physicsBody applyImpulse:CGVectorMake(-40, 0)];
+        self.canSwipe = NO;
     }
     
 }
 
 - (void)swipeRight {
 //    NSLog(@"Did Swipe Right");
-    [self.hero.physicsBody applyImpulse:CGVectorMake(40, 0)];
     
-    if (self.hero.physicsBody.dynamic == NO) {
-        self.hero.physicsBody.dynamic = YES;
+    if (self.canSwipe == YES) {
+        [self.hero.physicsBody applyImpulse:CGVectorMake(40, 0)];
+        self.canSwipe = NO;
     }
-    
+
 }
 
 -(void)update:(CFTimeInterval)currentTime {
