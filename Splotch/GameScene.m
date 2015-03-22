@@ -49,6 +49,7 @@ typedef enum {
     hero.physicsBody.categoryBitMask = heroCollider;
     hero.physicsBody.collisionBitMask = heroCollider | wallCollider;
     hero.physicsBody.contactTestBitMask = wallCollider | wallCollider;
+    hero.physicsBody.restitution = 0;
     
     self.hero = hero;
     [self addChild:hero];
@@ -62,6 +63,7 @@ typedef enum {
     spriteWallLeft.physicsBody.categoryBitMask = wallCollider;
     spriteWallLeft.physicsBody.collisionBitMask = wallCollider | heroCollider;
     spriteWallLeft.physicsBody.contactTestBitMask = heroCollider;
+    spriteWallLeft.physicsBody.restitution = 0;
     [self addChild:spriteWallLeft];
     
     SKSpriteNode *spriteWallRight = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 100)];
@@ -72,6 +74,7 @@ typedef enum {
     spriteWallRight.physicsBody.categoryBitMask = wallCollider;
     spriteWallRight.physicsBody.collisionBitMask = wallCollider | heroCollider;
     spriteWallRight.physicsBody.contactTestBitMask = heroCollider;
+    spriteWallRight.physicsBody.restitution = 0;
     [self addChild:spriteWallRight];
     
     // Create Vortexes outside of walls
@@ -105,7 +108,7 @@ typedef enum {
 
 - (void)swipeLeft {
 //    NSLog(@"Did Swipe Left");
-    [self.hero.physicsBody applyImpulse:CGVectorMake(-10, 0)];
+    [self.hero.physicsBody applyImpulse:CGVectorMake(-40, 0)];
     
     if (self.hero.physicsBody.dynamic == NO) {
         self.hero.physicsBody.dynamic = YES;
@@ -115,7 +118,7 @@ typedef enum {
 
 - (void)swipeRight {
 //    NSLog(@"Did Swipe Right");
-    [self.hero.physicsBody applyImpulse:CGVectorMake(10, 0)];
+    [self.hero.physicsBody applyImpulse:CGVectorMake(40, 0)];
     
     if (self.hero.physicsBody.dynamic == NO) {
         self.hero.physicsBody.dynamic = YES;
