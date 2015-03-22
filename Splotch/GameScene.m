@@ -43,7 +43,7 @@ typedef enum {
     [view addGestureRecognizer:swipeRight];
     
     // Hero
-    SKSpriteNode *hero = [SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(40, 40)];
+    SKSpriteNode *hero = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:CGSizeMake(40, 40)];
     
     hero.position = CGPointMake(self.size.width/2, self.size.height/4);
     hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hero.size];
@@ -57,7 +57,7 @@ typedef enum {
     [self addChild:hero];
     
     // Spawn walls
-    SKSpriteNode *spriteWallLeft = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 100)];
+    SKSpriteNode *spriteWallLeft = [SKSpriteNode spriteNodeWithColor:[UIColor cyanColor] size:CGSizeMake(40, 100)];
     spriteWallLeft.position = CGPointMake(0, self.size.height/4);
     spriteWallLeft.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:spriteWallLeft.size];
 //    spriteWallLeft.physicsBody.affectedByGravity = FALSE;
@@ -68,7 +68,7 @@ typedef enum {
     spriteWallLeft.physicsBody.restitution = 0;
     [self addChild:spriteWallLeft];
     
-    SKSpriteNode *spriteWallRight = [SKSpriteNode spriteNodeWithColor:[UIColor yellowColor] size:CGSizeMake(40, 100)];
+    SKSpriteNode *spriteWallRight = [SKSpriteNode spriteNodeWithColor:[UIColor cyanColor] size:CGSizeMake(40, 100)];
     spriteWallRight.position = CGPointMake(self.frame.size.width, self.size.height/4);
     spriteWallRight.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:spriteWallRight.size];
 //    spriteWallRight.physicsBody.affectedByGravity = FALSE;
@@ -135,6 +135,12 @@ typedef enum {
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    
+    if (self.canSwipe == YES) {
+        self.hero.color = [UIColor blueColor];
+    } else {
+        self.hero.color = [UIColor blackColor];
+    }
 }
 
 @end
