@@ -89,10 +89,10 @@
 		4D4A70C11ABC957A00C7669F /* Splotch */ = {
 			isa = PBXGroup;
 			children = (
+				4DE9417B1ABE83820065EF78 /* Obstacles */,
+				4DE9417A1ABE83600065EF78 /* Hero */,
 				4D4A70C61ABC957A00C7669F /* AppDelegate.h */,
 				4D4A70C71ABC957A00C7669F /* AppDelegate.m */,
-				4DE941771ABE81490065EF78 /* HeroSprite.h */,
-				4DE941781ABE81490065EF78 /* HeroSprite.m */,
 				4D4A70C91ABC957A00C7669F /* GameScene.h */,
 				4D4A70CA1ABC957A00C7669F /* GameScene.m */,
 				4D4A70CC1ABC957A00C7669F /* GameScene.sks */,
@@ -130,6 +130,22 @@
 				4D4A70E21ABC957A00C7669F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DE9417A1ABE83600065EF78 /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				4DE941771ABE81490065EF78 /* HeroSprite.h */,
+				4DE941781ABE81490065EF78 /* HeroSprite.m */,
+			);
+			name = Hero;
+			sourceTree = "<group>";
+		};
+		4DE9417B1ABE83820065EF78 /* Obstacles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Obstacles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
