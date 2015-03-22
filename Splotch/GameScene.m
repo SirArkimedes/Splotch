@@ -20,6 +20,8 @@
 
 @implementation GameScene
 
+#pragma mark - Init
+
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     
@@ -43,27 +45,15 @@
     [self addChild:self.hero];
     
     // Spawn walls
-    SKSpriteNode *spriteWallLeft = [SKSpriteNode spriteNodeWithColor:[SKColor cyanColor] size:CGSizeMake(40, 100)];
-    spriteWallLeft.position = CGPointMake(0, self.size.height/4);
-    spriteWallLeft.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:spriteWallLeft.size];
-//    spriteWallLeft.physicsBody.affectedByGravity = FALSE;
-    spriteWallLeft.physicsBody.dynamic = NO;
-    spriteWallLeft.physicsBody.categoryBitMask = wallColliderLeft;
-    spriteWallLeft.physicsBody.collisionBitMask = wallColliderRight | heroCollider;
-    spriteWallLeft.physicsBody.contactTestBitMask = heroCollider;
-    spriteWallLeft.physicsBody.restitution = 0;
-    [self addChild:spriteWallLeft];
+    SKSpriteNode *wallLeft = [self wallSprite];
+    wallLeft.position = CGPointMake(0, self.size.height/4);
+    wallLeft.physicsBody.categoryBitMask = wallColliderLeft;
+    [self addChild:wallLeft];
     
-    SKSpriteNode *spriteWallRight = [SKSpriteNode spriteNodeWithColor:[SKColor cyanColor] size:CGSizeMake(40, 100)];
-    spriteWallRight.position = CGPointMake(self.frame.size.width, self.size.height/4);
-    spriteWallRight.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:spriteWallRight.size];
-//    spriteWallRight.physicsBody.affectedByGravity = FALSE;
-    spriteWallRight.physicsBody.dynamic = NO;
-    spriteWallRight.physicsBody.categoryBitMask = wallColliderRight;
-    spriteWallRight.physicsBody.collisionBitMask = wallColliderLeft | heroCollider;
-    spriteWallRight.physicsBody.contactTestBitMask = heroCollider;
-    spriteWallRight.physicsBody.restitution = 0;
-    [self addChild:spriteWallRight];
+    SKSpriteNode *wallRight = [self wallSprite];
+    wallRight.position = CGPointMake(self.frame.size.width, self.size.height/4);
+    wallRight.physicsBody.categoryBitMask = wallColliderRight;
+    [self addChild:wallRight];
     
     // Create Vortexes outside of walls
     SKFieldNode *vortexLeft = [SKFieldNode springField];
@@ -87,6 +77,23 @@
 //    self.physicsBody = [SKPhysicsBody ]
 }
 
+#pragma mark - Sprites
+
+- (SKSpriteNode *)wallSprite {
+    
+    SKSpriteNode *wall = [SKSpriteNode spriteNodeWithColor:[SKColor cyanColor] size:CGSizeMake(40, 100)];
+    wall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:wall.size];
+    //    spriteWallRight.physicsBody.affectedByGravity = FALSE;
+    wall.physicsBody.dynamic = NO;
+    wall.physicsBody.collisionBitMask = wallColliderLeft | heroCollider | wallColliderRight;
+    wall.physicsBody.contactTestBitMask = heroCollider;
+    wall.physicsBody.restitution = 0;
+    
+    return wall;
+}
+
+#pragma mark - Collisions
+
 - (void)didBeginContact:(SKPhysicsContact *)contact {
     
     if (contact.bodyA.categoryBitMask == heroCollider && contact.bodyB.categoryBitMask == wallColliderLeft) {
@@ -102,6 +109,8 @@
     }
     
 }
+
+#pragma mark - Swipes
 
 - (void)swipeLeft {
 //    NSLog(@"Did Swipe Left");
@@ -122,6 +131,8 @@
     }
 
 }
+
+#pragma mark - Update
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
