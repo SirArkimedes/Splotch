@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4ZX-6a-Acp">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="3lb-9o-YPD">
+            <objects>
+                <viewController id="4ZX-6a-Acp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vek-KK-ajv"/>
+                        <viewControllerLayoutGuide type="bottom" id="0aD-GV-qnB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Yq-d6-l96">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cso-Hc-LgQ">
+                                <rect key="frame" x="264" y="285" width="72" height="30"/>
+                                <state key="normal" title="Play game">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="presentation" id="IcH-SX-Q5T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Cso-Hc-LgQ" firstAttribute="centerX" secondItem="0Yq-d6-l96" secondAttribute="centerX" id="JIx-gq-pUb"/>
+                            <constraint firstItem="Cso-Hc-LgQ" firstAttribute="centerY" secondItem="0Yq-d6-l96" secondAttribute="centerY" id="Lv9-69-Ll6"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yy3-nb-AN3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-216" y="292"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="maK-i9-Uhn"/>
                         <viewControllerLayoutGuide type="bottom" id="khH-OB-KpY"/>
