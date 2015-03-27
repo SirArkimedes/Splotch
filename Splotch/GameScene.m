@@ -132,6 +132,27 @@
 
 }
 
+#pragma mark - Taps
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    /* Called when a touch begins */
+    
+    CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self];
+        
+        // right
+        if (center.x < location.x) {
+            [self swipeRight];
+        // left
+        } else {
+            [self swipeLeft];
+        }
+        
+    }
+}
+
 #pragma mark - Update
 
 -(void)update:(CFTimeInterval)currentTime {
