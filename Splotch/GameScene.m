@@ -9,9 +9,12 @@
 #import "GameScene.h"
 #import "HeroSprite.h"
 
+static const CGFloat scrollSpeed = 150.f;
+
 @interface GameScene ()
 
 @property (strong, nonatomic) SKSpriteNode *hero;
+@property (strong, nonatomic) SKSpriteNode *physicsNode;
 
 @property BOOL canSwipeLeft;
 @property BOOL canSwipeRight;
@@ -44,16 +47,22 @@
     self.hero.position = CGPointMake(self.size.width/2, self.size.height/4);
     [self addChild:self.hero];
     
+    // Physics Node
+    SKSpriteNode *physics = [SKSpriteNode spriteNodeWithColor:[SKColor clearColor] size:CGSizeMake(self.frame.size.width, self.frame.size.height)];
+    
+    self.physicsNode = physics;
+    [self addChild:self.physicsNode];
+    
     // Spawn walls
     SKSpriteNode *wallLeft = [self wallSprite];
     wallLeft.position = CGPointMake(0, self.size.height/4);
     wallLeft.physicsBody.categoryBitMask = wallColliderLeft;
-    [self addChild:wallLeft];
+    [self.physicsNode addChild:wallLeft];
     
     SKSpriteNode *wallRight = [self wallSprite];
     wallRight.position = CGPointMake(self.frame.size.width, self.size.height/4);
     wallRight.physicsBody.categoryBitMask = wallColliderRight;
-    [self addChild:wallRight];
+    [self.physicsNode addChild:wallRight];
     
     // Create Vortexes outside of walls
     SKFieldNode *vortexLeft = [SKFieldNode springField];
@@ -61,14 +70,14 @@
     vortexLeft.enabled = YES;
     vortexLeft.strength = .3f;
     vortexLeft.region = [[SKRegion alloc] initWithSize:self.frame.size];
-    [self addChild:vortexLeft];
+    [self.physicsNode addChild:vortexLeft];
     
     SKFieldNode *vortexRight = [SKFieldNode springField];
     vortexRight.position = CGPointMake((self.size.width*2)-47, self.size.height/4);
     vortexRight.enabled = YES;
     vortexRight.strength = .3f;
     vortexRight.region = [[SKRegion alloc] initWithSize:self.frame.size];
-    [self addChild:vortexRight];
+    [self.physicsNode addChild:vortexRight];
     
     // Can swipe either way on start
     self.canSwipeRight = YES;
@@ -157,6 +166,11 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    
+    // Move hero
+    self.physicsNode.position = CGPointMake(self.physicsNode.position.x, self.physicsNode.position.y - (currentTime/60000) * scrollSpeed);
+//    NSLog(@"%@", NSStringFromCGPoint(self.hero.position));
+    
 }
 
 @end
