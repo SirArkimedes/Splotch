@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "HeroSprite.h"
+#import "InitialWall.h"
 
 static const CGFloat scrollSpeed = 150.f;
 
@@ -18,6 +19,8 @@ static const CGFloat scrollSpeed = 150.f;
 
 @property BOOL canSwipeLeft;
 @property BOOL canSwipeRight;
+
+@property (strong, nonatomic) NSMutableArray *walls;
 
 @end
 
@@ -53,13 +56,13 @@ static const CGFloat scrollSpeed = 150.f;
     self.physicsNode = physics;
     [self addChild:self.physicsNode];
     
-    // Spawn walls
-    SKSpriteNode *wallLeft = [self wallSprite];
+    // Initial walls
+    SKSpriteNode *wallLeft = [InitialWall initialWall];
     wallLeft.position = CGPointMake(0, self.size.height/4);
     wallLeft.physicsBody.categoryBitMask = wallColliderLeft;
     [self.physicsNode addChild:wallLeft];
     
-    SKSpriteNode *wallRight = [self wallSprite];
+    SKSpriteNode *wallRight = [InitialWall initialWall];
     wallRight.position = CGPointMake(self.frame.size.width, self.size.height/4);
     wallRight.physicsBody.categoryBitMask = wallColliderRight;
     [self.physicsNode addChild:wallRight];
@@ -84,21 +87,6 @@ static const CGFloat scrollSpeed = 150.f;
     self.canSwipeLeft = YES;
     
 //    self.physicsBody = [SKPhysicsBody ]
-}
-
-#pragma mark - Sprites
-
-- (SKSpriteNode *)wallSprite {
-    
-    SKSpriteNode *wall = [SKSpriteNode spriteNodeWithColor:[SKColor cyanColor] size:CGSizeMake(40, 100)];
-    wall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:wall.size];
-    //    spriteWallRight.physicsBody.affectedByGravity = FALSE;
-    wall.physicsBody.dynamic = NO;
-    wall.physicsBody.collisionBitMask = wallColliderLeft | heroCollider | wallColliderRight;
-    wall.physicsBody.contactTestBitMask = heroCollider;
-    wall.physicsBody.restitution = 0;
-    
-    return wall;
 }
 
 #pragma mark - Collisions
@@ -168,7 +156,7 @@ static const CGFloat scrollSpeed = 150.f;
     /* Called before each frame is rendered */
     
     // Move hero
-    self.physicsNode.position = CGPointMake(self.physicsNode.position.x, self.physicsNode.position.y - (currentTime/60000));
+    self.physicsNode.position = CGPointMake(self.physicsNode.position.x, self.physicsNode.position.y - (currentTime/10000));
 //    NSLog(@"%@", NSStringFromCGPoint(self.hero.position));
     
 }
