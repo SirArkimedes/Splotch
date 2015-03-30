@@ -8,10 +8,29 @@
 
 #import "InitialWall.h"
 #import "GameScene.h"
+#import "SectionNode.h"
 
 @implementation InitialWall
 
-+ (instancetype)initialWall {
++ (instancetype)initialWallWithBlankHeight:(CGFloat)height {
+    
+    SectionNode *blank = [SectionNode blankWithHeight:height];
+    
+    InitialWall *leftWall = [self generateSprite];
+    leftWall.position = CGPointMake(0, blank.size.height/2);
+    leftWall.physicsBody.categoryBitMask = wallColliderLeft;
+    [blank addChild:leftWall];
+    
+    InitialWall *rightWall = [self generateSprite];
+    rightWall.position = CGPointMake(blank.size.width, blank.size.height/2);
+    rightWall.physicsBody.categoryBitMask = wallColliderRight;
+    [blank addChild:rightWall];
+    
+    return blank;
+    
+}
+
++ (InitialWall *)generateSprite {
     
     InitialWall *wall = [InitialWall spriteNodeWithColor:[SKColor cyanColor] size:CGSizeMake(40, 100)];
     

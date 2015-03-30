@@ -1,5 +1,5 @@
 //
-//  InitialWall.h
+//  Stats.h
 //  Splotch
 //
 //  Created by Andrew Robinson on 3/30/15.
@@ -8,8 +8,11 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface InitialWall : SKSpriteNode
+@interface Stats : SKSpriteNode
 
-+ (instancetype)initialWallWithBlankHeight:(CGFloat)height;
+@property CGSize screenSize;
+
+-(id)init;
++(Stats*)instance;
 
 @end

@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "HeroSprite.h"
 #import "InitialWall.h"
+#import "Stats.h"
 
 static const CGFloat scrollSpeed = 150.f;
 
@@ -30,6 +31,9 @@ static const CGFloat scrollSpeed = 150.f;
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
+    
+    // Save the screen size
+    [Stats instance].screenSize = CGSizeMake(self.frame.size.width, self.frame.size.height);
     
     // Collisions
     self.physicsWorld.contactDelegate = self;
@@ -57,15 +61,8 @@ static const CGFloat scrollSpeed = 150.f;
     [self addChild:self.physicsNode];
     
     // Initial walls
-    SKSpriteNode *wallLeft = [InitialWall initialWall];
-    wallLeft.position = CGPointMake(0, self.size.height/4);
-    wallLeft.physicsBody.categoryBitMask = wallColliderLeft;
-    [self.physicsNode addChild:wallLeft];
-    
-    SKSpriteNode *wallRight = [InitialWall initialWall];
-    wallRight.position = CGPointMake(self.frame.size.width, self.size.height/4);
-    wallRight.physicsBody.categoryBitMask = wallColliderRight;
-    [self.physicsNode addChild:wallRight];
+    SKSpriteNode *initialWall = [InitialWall initialWallWithBlankHeight:self.frame.size.height/2];
+    [self.physicsNode addChild:initialWall];
     
     // Create Vortexes outside of walls
     SKFieldNode *vortexLeft = [SKFieldNode springField];

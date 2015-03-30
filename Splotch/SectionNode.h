@@ -1,5 +1,5 @@
 //
-//  InitialWall.h
+//  SectionNode.h
 //  Splotch
 //
 //  Created by Andrew Robinson on 3/30/15.
@@ -8,8 +8,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface InitialWall : SKSpriteNode
+@interface SectionNode : SKSpriteNode
 
-+ (instancetype)initialWallWithBlankHeight:(CGFloat)height;
++ (instancetype)blankWithHeight:(CGFloat)height;
 
 @end
