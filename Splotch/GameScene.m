@@ -153,7 +153,7 @@ static const CGFloat scrollSpeed = 150.f;
     /* Called before each frame is rendered */
     
     // Move hero
-    self.physicsNode.position = CGPointMake(self.physicsNode.position.x, self.physicsNode.position.y - (currentTime/10000));
+    self.physicsNode.position = CGPointMake(self.physicsNode.position.x, self.physicsNode.position.y - (currentTime/100000));
 //    NSLog(@"%@", NSStringFromCGPoint(self.hero.position));
     
 }
