@@ -30,10 +30,7 @@
 
 @implementation GameViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
+- (void)resetViewAndScene {
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
@@ -48,6 +45,20 @@
     
     // Present the scene.
     [skView presentScene:scene];
+    
+}
+
+- (IBAction)resetScene:(id)sender {
+    
+    [self resetViewAndScene];
+    
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    [self resetViewAndScene];
 }
 
 - (BOOL)shouldAutorotate
