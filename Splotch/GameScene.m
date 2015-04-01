@@ -8,8 +8,10 @@
 
 #import "GameScene.h"
 #import "HeroSprite.h"
-#import "InitialWall.h"
 #import "Stats.h"
+
+#import "InitialWall.h"
+#import "StraightWall.h"
 
 static const CGFloat scrollSpeed = 150.f;
 
@@ -63,6 +65,10 @@ static const CGFloat scrollSpeed = 150.f;
     // Initial walls
     SKSpriteNode *initialWall = [InitialWall initialWallWithBlankHeight:self.frame.size.height/2];
     [self.physicsNode addChild:initialWall];
+    
+    SKSpriteNode *straightWall = [StraightWall easyWall];
+    straightWall.position = CGPointMake(0, initialWall.size.height + straightWall.size.height/2);
+    [self.physicsNode addChild:straightWall];
     
     // Create Vortexes outside of walls
     SKFieldNode *vortexLeft = [SKFieldNode springField];
