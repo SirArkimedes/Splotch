@@ -12,7 +12,7 @@
 
 @implementation InitialWall
 
-+ (instancetype)initialWallWithBlankHeight:(CGFloat)height {
++ (id)initialWallWithBlankHeight:(CGFloat)height {
     
     SectionNode *blank = [SectionNode blankWithHeight:height];
     

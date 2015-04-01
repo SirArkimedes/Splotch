@@ -10,6 +10,6 @@
 
 @interface InitialWall : SKSpriteNode
 
-+ (instancetype)initialWallWithBlankHeight:(CGFloat)height;
++ (id)initialWallWithBlankHeight:(CGFloat)height;
 
 @end
