@@ -76,14 +76,14 @@ static const CGFloat scrollSpeed = 150.f;
     vortexLeft.enabled = YES;
     vortexLeft.strength = .3f;
     vortexLeft.region = [[SKRegion alloc] initWithSize:self.frame.size];
-    [self.physicsNode addChild:vortexLeft];
+    [self addChild:vortexLeft];
     
     SKFieldNode *vortexRight = [SKFieldNode springField];
     vortexRight.position = CGPointMake((self.size.width*2)-47, self.size.height/4);
     vortexRight.enabled = YES;
     vortexRight.strength = .3f;
     vortexRight.region = [[SKRegion alloc] initWithSize:self.frame.size];
-    [self.physicsNode addChild:vortexRight];
+    [self addChild:vortexRight];
     
     // Can swipe either way on start
     self.canSwipeRight = YES;
