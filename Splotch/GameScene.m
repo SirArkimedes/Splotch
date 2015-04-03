@@ -34,6 +34,9 @@ static const CGFloat scrollSpeed = 150.f;
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     
+    // Initialize walls
+    self.walls = [[NSMutableArray alloc] init];
+    
     // Save the screen size
     [Stats instance].screenSize = CGSizeMake(self.frame.size.width, self.frame.size.height);
     
@@ -65,10 +68,12 @@ static const CGFloat scrollSpeed = 150.f;
     // Initial walls
     SKSpriteNode *initialWall = [InitialWall initialWallWithBlankHeight:self.frame.size.height/2];
     [self.physicsNode addChild:initialWall];
+    [self.walls addObject:initialWall];
     
     SKSpriteNode *straightWall = [StraightWall easyWall];
     straightWall.position = CGPointMake(0, initialWall.size.height + straightWall.size.height/2);
     [self.physicsNode addChild:straightWall];
+    [self.walls addObject:straightWall];
     
     // Create Vortexes outside of walls
     SKFieldNode *vortexLeft = [SKFieldNode springField];
@@ -158,9 +163,55 @@ static const CGFloat scrollSpeed = 150.f;
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     
-    // Move hero
-    self.physicsNode.position = CGPointMake(self.physicsNode.position.x, self.physicsNode.position.y - (currentTime/100000));
+//    // Move hero
+//    self.physicsNode.position = CGPointMake(self.physicsNode.position.x, self.physicsNode.position.y - (currentTime/100000));
+    
+    for (SKSpriteNode *child in [self.physicsNode children]) {
+        child.position = CGPointMake(child.position.x, child.position.y - (currentTime/100000));
+    }
+    
+    // Create endless walls
+    NSMutableArray *offScreenWalls = nil;
+    for (SKSpriteNode *wall in self.walls) {
+//        CGPoint wallPosition = wall.position;
+        CGFloat wallY = wall.position.y + wall.size.height/2;
+        if (wallY < 0) {
+            if (offScreenWalls == nil) {
+                offScreenWalls = [NSMutableArray array];
+            }
+            [offScreenWalls addObject:wall];
+        }
+    }
+    
+    for (SKSpriteNode *wallToRemove in offScreenWalls) {
+        [wallToRemove removeFromParent];
+        [self.walls removeObject:wallToRemove];
+        // for each removed obstacle, add a new one
+        [self spawnNewWall];
+    }
+    
 //    NSLog(@"%@", NSStringFromCGPoint(self.hero.position));
+    
+}
+
+#pragma mark - Helpers
+
+- (void)spawnNewWall {
+    
+    SKSpriteNode *previousWall = [self.walls lastObject];
+    CGFloat previousWallYPosition = previousWall.position.y;
+//    if (!previousWall) {
+//        // this is the first obstacle
+//        previousWallYPosition = firstObstaclePosition;
+//    }
+    
+    SKSpriteNode *straightWall = [StraightWall easyWall];
+    straightWall.position = CGPointMake(0, previousWallYPosition + straightWall.size.height + 10);
+    
+//    [obstacle setupRandomPosition];
+    
+    [self.physicsNode addChild:straightWall];
+    [self.walls addObject:straightWall];
     
 }
 
