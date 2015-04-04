@@ -12,6 +12,7 @@
 
 #import "InitialWall.h"
 #import "StraightWall.h"
+#import "FunnelWall.h"
 
 static const CGFloat scrollSpeed = 150.f;
 
@@ -205,13 +206,27 @@ static const CGFloat scrollSpeed = 150.f;
 //        previousWallYPosition = firstObstaclePosition;
 //    }
     
-    SKSpriteNode *straightWall = [StraightWall easyWall];
-    straightWall.position = CGPointMake(0, previousWallYPosition + straightWall.size.height + 10);
+    int ran = arc4random_uniform(3);
+    
+    SKSpriteNode *wall;
+    switch (ran) {
+        case 1:
+            wall = [StraightWall easyWall];
+            break;
+        case 2:
+            wall = [FunnelWall easyWall];
+            break;
+        default:
+            wall = [StraightWall easyWall];
+            break;
+    }
+    
+    wall.position = CGPointMake(0, previousWallYPosition + wall.size.height + 10);
     
 //    [obstacle setupRandomPosition];
     
-    [self.physicsNode addChild:straightWall];
-    [self.walls addObject:straightWall];
+    [self.physicsNode addChild:wall];
+    [self.walls addObject:wall];
     
 }
 
