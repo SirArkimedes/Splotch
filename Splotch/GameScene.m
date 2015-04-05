@@ -46,14 +46,14 @@ static const CGFloat scrollSpeed = 150.f;
     
     self.physicsWorld.gravity = CGVectorMake(0,0);
     
-    // Setup touches
-    UISwipeGestureRecognizer * swipeLeft= [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeLeft)];
-    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-    [view addGestureRecognizer:swipeLeft];
-    // listen for swipes to the right
-    UISwipeGestureRecognizer * swipeRight= [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeRight)];
-    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-    [view addGestureRecognizer:swipeRight];
+//    // Setup touches
+//    UISwipeGestureRecognizer * swipeLeft= [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeLeft)];
+//    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+//    [view addGestureRecognizer:swipeLeft];
+//    // listen for swipes to the right
+//    UISwipeGestureRecognizer * swipeRight= [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeRight)];
+//    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+//    [view addGestureRecognizer:swipeRight];
     
     // Hero
     self.hero = [HeroSprite heroSprite];
