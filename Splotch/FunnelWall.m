@@ -20,10 +20,10 @@
     leftFunnel.physicsBody.categoryBitMask = wallColliderLeft;
     
     FunnelWall *rightFunnel = [self generateSprite];
-    rightFunnel.position = CGPointMake([Stats instance].screenSize.width/2 + 30, 0);
+    rightFunnel.position = CGPointMake([Stats instance].screenSize.width/2 + 30, 40);
     rightFunnel.physicsBody.categoryBitMask = wallColliderRight;
     
-    SectionNode *blank = [SectionNode blankWithHeight:rightFunnel.size.height];
+    SectionNode *blank = [SectionNode blankWithHeight:rightFunnel.size.height + 40];
     [blank addChild:leftFunnel];
     [blank addChild:rightFunnel];
     
