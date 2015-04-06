@@ -78,16 +78,16 @@ static const CGFloat scrollSpeed = 150.f;
     
     // Create Vortexes outside of walls
     SKFieldNode *vortexLeft = [SKFieldNode springField];
-    vortexLeft.position = CGPointMake(-self.size.width+47, self.size.height/4);
+    vortexLeft.position = CGPointMake(-self.size.width/2 - 10, self.size.height/4);
     vortexLeft.enabled = YES;
-    vortexLeft.strength = .3f;
+    vortexLeft.strength = .2f;
     vortexLeft.region = [[SKRegion alloc] initWithSize:self.frame.size];
     [self addChild:vortexLeft];
     
     SKFieldNode *vortexRight = [SKFieldNode springField];
-    vortexRight.position = CGPointMake((self.size.width*2)-47, self.size.height/4);
+    vortexRight.position = CGPointMake((self.size.width + (self.size.width/2)) + 20, self.size.height/4);
     vortexRight.enabled = YES;
-    vortexRight.strength = .3f;
+    vortexRight.strength = .2f;
     vortexRight.region = [[SKRegion alloc] initWithSize:self.frame.size];
     [self addChild:vortexRight];
     
@@ -122,7 +122,7 @@ static const CGFloat scrollSpeed = 150.f;
 //    NSLog(@"Did Swipe Left");
     
     if (self.canSwipeLeft) {
-        [self.hero.physicsBody applyImpulse:CGVectorMake(-40, 0)];
+        [self.hero.physicsBody applyImpulse:CGVectorMake(-50, 0)];
         self.canSwipeLeft = NO;
     }
     
@@ -132,7 +132,7 @@ static const CGFloat scrollSpeed = 150.f;
 //    NSLog(@"Did Swipe Right");
     
     if (self.canSwipeRight) {
-        [self.hero.physicsBody applyImpulse:CGVectorMake(40, 0)];
+        [self.hero.physicsBody applyImpulse:CGVectorMake(50, 0)];
         self.canSwipeRight = NO;
     }
 
