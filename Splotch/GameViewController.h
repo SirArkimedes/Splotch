@@ -12,5 +12,9 @@
 @interface GameViewController : UIViewController
 
 - (void)resetViewAndScene;
+- (SKScene*)resetSelf;
+
+-(id)init;
++(GameViewController*)instance;
 
 @end

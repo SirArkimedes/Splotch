@@ -9,6 +9,8 @@
 #import "GameViewController.h"
 #import "GameScene.h"
 
+static GameViewController *inst = nil;
+
 @implementation SKScene (Unarchive)
 
 + (instancetype)unarchiveFromFile:(NSString *)file {
@@ -30,6 +32,19 @@
 
 @implementation GameViewController
 
+- (id)init {
+    if(self=[super init]) {
+    }
+    return self;
+}
+
++ (GameViewController*)instance {
+    if (!inst) {
+        inst = [[GameViewController alloc] init];
+    }
+    return inst;
+}
+
 - (void)resetViewAndScene {
     // Configure the view.
     SKView * skView = (SKView *)self.view;
@@ -48,6 +63,15 @@
     // Present the scene.
     [skView presentScene:scene];
     
+}
+
+- (SKScene*)resetSelf {
+    // Create and configure the scene.
+    GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
+//    scene.size = skView.frame.size;
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    return scene;
 }
 
 - (IBAction)resetScene:(id)sender {

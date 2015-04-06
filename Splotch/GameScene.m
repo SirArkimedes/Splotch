@@ -238,9 +238,8 @@ static const CGFloat scrollSpeed = 150.f;
 
 - (void)gameOver {
     // Create and configure the scene.
-    GameScene *scene = [[GameScene alloc] init];
+    SKScene *scene = [[GameViewController instance] resetSelf];
     scene.size = self.view.frame.size;
-    scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
     [self.view presentScene:scene];
