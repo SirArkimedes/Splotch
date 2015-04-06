@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "HeroSprite.h"
 #import "Stats.h"
+#import "GameViewController.h"
 
 #import "InitialWall.h"
 #import "StraightWall.h"
@@ -191,6 +192,11 @@ static const CGFloat scrollSpeed = 150.f;
         [self spawnNewWall];
     }
     
+    // Check game over
+    if (self.hero.position.x < 0 || self.hero.position.x > self.frame.size.width ||
+        self.hero.position.y < 0 || self.hero.position.y > self.frame.size.height)
+        [self gameOver];
+    
 //    NSLog(@"%@", NSStringFromCGPoint(self.hero.position));
     
 }
@@ -228,6 +234,16 @@ static const CGFloat scrollSpeed = 150.f;
     [self.physicsNode addChild:wall];
     [self.walls addObject:wall];
     
+}
+
+- (void)gameOver {
+    // Create and configure the scene.
+    GameScene *scene = [[GameScene alloc] init];
+    scene.size = self.view.frame.size;
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    // Present the scene.
+    [self.view presentScene:scene];
 }
 
 @end
