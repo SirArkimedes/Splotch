@@ -91,7 +91,15 @@ static const CGFloat scrollSpeed = 150.f;
     vortexRight.strength = .2f;
     vortexRight.region = [[SKRegion alloc] initWithSize:self.frame.size];
     [self addChild:vortexRight];
-        
+    
+    // Inverted vortex at the bottom of the screen
+    SKFieldNode *vortexBottom = [SKFieldNode springField];
+    vortexBottom.position = CGPointMake(self.size.width/2, (-self.size.height + 40));
+    vortexBottom.enabled = YES;
+    vortexBottom.strength = -.2f;
+    vortexBottom.region = [[SKRegion alloc] initWithSize:self.frame.size];
+    [self addChild:vortexBottom];
+    
     // Can swipe either way on start
     self.canSwipeRight = YES;
     self.canSwipeLeft = YES;
