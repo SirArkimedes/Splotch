@@ -79,19 +79,19 @@ static const CGFloat scrollSpeed = 150.f;
     
     // Create Vortexes outside of walls
     SKFieldNode *vortexLeft = [SKFieldNode springField];
-    vortexLeft.position = CGPointMake(-self.size.width/2 - 10, self.size.height/4);
+    vortexLeft.position = CGPointMake(-self.size.width + 40, self.size.height/4);
     vortexLeft.enabled = YES;
     vortexLeft.strength = .2f;
     vortexLeft.region = [[SKRegion alloc] initWithSize:self.frame.size];
     [self addChild:vortexLeft];
     
     SKFieldNode *vortexRight = [SKFieldNode springField];
-    vortexRight.position = CGPointMake((self.size.width + (self.size.width/2)) + 20, self.size.height/4);
+    vortexRight.position = CGPointMake((self.size.width*2) - 40, self.size.height/4);
     vortexRight.enabled = YES;
     vortexRight.strength = .2f;
     vortexRight.region = [[SKRegion alloc] initWithSize:self.frame.size];
     [self addChild:vortexRight];
-    
+        
     // Can swipe either way on start
     self.canSwipeRight = YES;
     self.canSwipeLeft = YES;
