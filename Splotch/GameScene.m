@@ -79,17 +79,17 @@ static const CGFloat scrollSpeed = 150.f;
     
     // Create Vortexes outside of walls
     SKFieldNode *vortexLeft = [SKFieldNode springField];
-    vortexLeft.position = CGPointMake(-self.size.width + 40, self.size.height/4);
+    vortexLeft.position = CGPointMake(-20, self.size.height/4);
     vortexLeft.enabled = YES;
-    vortexLeft.strength = .2f;
-    vortexLeft.region = [[SKRegion alloc] initWithSize:self.frame.size];
+    vortexLeft.strength = .9f;
+    vortexLeft.region = [[SKRegion alloc] initWithSize:CGSizeMake(60, self.frame.size.height)];
     [self addChild:vortexLeft];
     
     SKFieldNode *vortexRight = [SKFieldNode springField];
-    vortexRight.position = CGPointMake((self.size.width*2) - 40, self.size.height/4);
+    vortexRight.position = CGPointMake(self.size.width + 20, self.size.height/4);
     vortexRight.enabled = YES;
-    vortexRight.strength = .2f;
-    vortexRight.region = [[SKRegion alloc] initWithSize:self.frame.size];
+    vortexRight.strength = .9f;
+    vortexRight.region = [[SKRegion alloc] initWithSize:CGSizeMake(60, self.frame.size.height)];
     [self addChild:vortexRight];
     
     // Inverted vortex at the bottom of the screen
