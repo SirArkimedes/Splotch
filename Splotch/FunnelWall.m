@@ -17,11 +17,11 @@
     
     FunnelWall *leftFunnel = [self generateSprite];
     leftFunnel.position = CGPointMake([Stats instance].screenSize.width/2 - 30, 0);
-    leftFunnel.physicsBody.categoryBitMask = wallColliderLeft;
+    leftFunnel.physicsBody.categoryBitMask = wallColliderMiddle;
     
     FunnelWall *rightFunnel = [self generateSprite];
     rightFunnel.position = CGPointMake([Stats instance].screenSize.width/2 + 30, 40);
-    rightFunnel.physicsBody.categoryBitMask = wallColliderRight;
+    rightFunnel.physicsBody.categoryBitMask = wallColliderMiddle;
     
     SectionNode *blank = [SectionNode blankWithHeight:rightFunnel.size.height + 40];
     [blank addChild:leftFunnel];
@@ -33,7 +33,7 @@
 
 + (FunnelWall *)generateSprite {
     
-    FunnelWall *wall = [FunnelWall spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(20, 400)];
+    FunnelWall *wall = [FunnelWall spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(20, 200)];
     
     wall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:wall.size];
     wall.physicsBody.dynamic = NO;

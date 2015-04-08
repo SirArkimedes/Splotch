@@ -13,6 +13,7 @@
 typedef enum {
     
     heroCollider,
+    wallColliderMiddle,
     wallColliderRight,
     wallColliderLeft
     

@@ -123,6 +123,12 @@ static const CGFloat scrollSpeed = 150.f;
         self.canSwipeLeft = YES;
     }
     
+    if (contact.bodyA.categoryBitMask == heroCollider && contact.bodyB.categoryBitMask == wallColliderMiddle) {
+        NSLog(@"Collide Middle");
+        self.canSwipeRight = YES;
+        self.canSwipeLeft = YES;
+    }
+    
 }
 
 #pragma mark - Swipes
@@ -135,6 +141,12 @@ static const CGFloat scrollSpeed = 150.f;
         self.canSwipeLeft = NO;
     }
     
+    if (self.canSwipeLeft && self.canSwipeRight) {
+        [self.hero.physicsBody applyImpulse:CGVectorMake(50, 0)];
+        self.canSwipeRight = NO;
+        self.canSwipeLeft = NO;
+    }
+    
 }
 
 - (void)swipeRight {
@@ -143,6 +155,12 @@ static const CGFloat scrollSpeed = 150.f;
     if (self.canSwipeRight) {
         [self.hero.physicsBody applyImpulse:CGVectorMake(50, 0)];
         self.canSwipeRight = NO;
+    }
+    
+    if (self.canSwipeLeft && self.canSwipeRight) {
+        [self.hero.physicsBody applyImpulse:CGVectorMake(50, 0)];
+        self.canSwipeRight = NO;
+        self.canSwipeLeft = NO;
     }
 
 }
