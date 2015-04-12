@@ -15,7 +15,7 @@
 #import "StraightWall.h"
 #import "FunnelWall.h"
 
-static const CGFloat scrollSpeed = 150.f;
+static const CGFloat scrollSpeed = 4.f;
 
 @interface GameScene ()
 
@@ -195,7 +195,7 @@ static const CGFloat scrollSpeed = 150.f;
 //    self.physicsNode.position = CGPointMake(self.physicsNode.position.x, self.physicsNode.position.y - (currentTime/100000));
     
     for (SKSpriteNode *child in [self.physicsNode children]) {
-        child.position = CGPointMake(child.position.x, child.position.y - (currentTime/100));
+        child.position = CGPointMake(child.position.x, child.position.y - scrollSpeed);
     }
     
     // Create endless walls
