@@ -78,27 +78,34 @@ static const CGFloat scrollSpeed = 4.f;
     [self.walls addObject:straightWall];
     
     // Create Vortexes outside of walls
-    SKFieldNode *vortexLeft = [SKFieldNode springField];
-    vortexLeft.position = CGPointMake(-20, self.size.height/4);
-    vortexLeft.enabled = YES;
-    vortexLeft.strength = .9f;
-    vortexLeft.region = [[SKRegion alloc] initWithSize:CGSizeMake(60, self.frame.size.height)];
-    [self addChild:vortexLeft];
+//    SKFieldNode *vortexLeft = [SKFieldNode springField];
+//    vortexLeft.position = CGPointMake(-20, self.size.height/4);
+//    vortexLeft.enabled = YES;
+//    vortexLeft.strength = .9f;
+//    vortexLeft.region = [[SKRegion alloc] initWithSize:CGSizeMake(60, self.frame.size.height)];
+//    [self addChild:vortexLeft];
+//    
+//    SKFieldNode *vortexRight = [SKFieldNode springField];
+//    vortexRight.position = CGPointMake(self.size.width + 20, self.size.height/4);
+//    vortexRight.enabled = YES;
+//    vortexRight.strength = .9f;
+//    vortexRight.region = [[SKRegion alloc] initWithSize:CGSizeMake(60, self.frame.size.height)];
+//    [self addChild:vortexRight];
     
-    SKFieldNode *vortexRight = [SKFieldNode springField];
-    vortexRight.position = CGPointMake(self.size.width + 20, self.size.height/4);
-    vortexRight.enabled = YES;
-    vortexRight.strength = .9f;
-    vortexRight.region = [[SKRegion alloc] initWithSize:CGSizeMake(60, self.frame.size.height)];
-    [self addChild:vortexRight];
+//    // Inverted vortex at the bottom of the screen
+//    SKFieldNode *vortexBottom = [SKFieldNode springField];
+//    vortexBottom.position = CGPointMake(self.size.width/2, -20);
+//    vortexBottom.enabled = YES;
+//    vortexBottom.strength = -.9f;
+//    vortexBottom.region = [[SKRegion alloc] initWithSize:CGSizeMake(self.size.width, 60)];
+//    [self addChild:vortexBottom];
     
-    // Inverted vortex at the bottom of the screen
-    SKFieldNode *vortexBottom = [SKFieldNode springField];
-    vortexBottom.position = CGPointMake(self.size.width/2, -20);
-    vortexBottom.enabled = YES;
-    vortexBottom.strength = -.9f;
-    vortexBottom.region = [[SKRegion alloc] initWithSize:CGSizeMake(self.size.width, 60)];
-    [self addChild:vortexBottom];
+    SKFieldNode *vortextMid = [SKFieldNode springField];
+    vortextMid.position = CGPointMake(self.size.width/2 + 1, self.size.height/4);
+    vortextMid.enabled = YES;
+    vortextMid.strength = -.1f;
+    vortextMid.region = [[SKRegion alloc] initWithSize:self.size];
+    [self addChild:vortextMid];
     
     // Can swipe either way on start
     self.canSwipeRight = YES;
