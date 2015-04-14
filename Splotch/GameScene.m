@@ -234,6 +234,14 @@ static const CGFloat scrollSpeed = 4.f;
     
 }
 
+- (void)didSimulatePhysics {
+    
+    CGPoint pos = self.hero.position;
+    pos.y = self.frame.size.height/4;
+    self.hero.position = pos;
+    
+}
+
 #pragma mark - Helpers
 
 - (void)spawnNewWall {
