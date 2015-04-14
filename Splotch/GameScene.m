@@ -101,7 +101,7 @@ static const CGFloat scrollSpeed = 4.f;
 //    [self addChild:vortexBottom];
     
     SKFieldNode *vortextMid = [SKFieldNode springField];
-    vortextMid.position = CGPointMake(self.size.width/2 + 1, self.size.height/4);
+    vortextMid.position = CGPointMake(self.size.width/2, self.size.height/4 - 1);
     vortextMid.enabled = YES;
     vortextMid.strength = -.1f;
     vortextMid.region = [[SKRegion alloc] initWithSize:self.size];
