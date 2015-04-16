@@ -12,6 +12,7 @@
 #import "GameViewController.h"
 
 #import "InitialWall.h"
+#import "BlockingWall.h"
 #import "StraightWall.h"
 #import "FunnelWall.h"
 
@@ -76,6 +77,11 @@ static const CGFloat scrollSpeed = 4.f;
     straightWall.position = CGPointMake(0, initialWall.size.height + straightWall.size.height/2);
     [self.physicsNode addChild:straightWall];
     [self.walls addObject:straightWall];
+    
+    SKSpriteNode *block = [BlockingWall easyWall];
+    block.position = CGPointMake(0, straightWall.position.y + straightWall.size.height);
+    [self.physicsNode addChild:block];
+    [self.walls addObject:block];
     
     // Create Vortexes outside of walls
 //    SKFieldNode *vortexLeft = [SKFieldNode springField];
