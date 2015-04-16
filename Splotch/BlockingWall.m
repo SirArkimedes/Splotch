@@ -29,7 +29,7 @@
 
 + (BlockingWall *)generateSprite {
     
-    BlockingWall *wall = [BlockingWall spriteNodeWithColor:[SKColor redColor] size:CGSizeMake(100, 40)];
+    BlockingWall *wall = [BlockingWall spriteNodeWithColor:[SKColor purpleColor] size:CGSizeMake(100, 40)];
     
     wall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:wall.size];
     wall.physicsBody.dynamic = NO;
